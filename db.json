@@ -1,19 +1,23 @@
 {
-  "posts": [
+  "books": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "title": "The Hunger Games",
+      "author": "Suzanne Collins",
+      "genre": "dystopian",
+      "coverPhoto": "",
+      "publishingDate": ""
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "title": "Orleans",
+      "author": "Sherri L. Smith",
+      "genre": "dystopian",
+      "coverPhoto": "https://images2.penguinrandomhouse.com/cover/9780147509963",
+      "publishingDate": "03-06-2014"
+    },
+    {
+
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
