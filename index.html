@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>My Personal Library</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
   </head>
   <body>
     <div id="container">
@@ -15,13 +15,17 @@
         <input id="genre-input" type="text" placeholder="Genre"></input>
         <input id="coverphoto" type="text" placeholder="Cover photo"></input>
         <input id="publishingdate" type="text" placeholder="Publishing Date"></input>
-        <button id= "submit"> "Add Book to Library"</button>
+        <button id= "submit"> Add Book to Library</button>
       </form>
 
       <div id="book-container">
         <p><center>My Books</center></p>
+        <div id="search">
+          <input id="search-bar" type="text" placeholder="Harry Potter and the Sorcerer's Stone"></input>
+          <button id="search-button">Search</button>
+        </div>
       </div>
     </div>
-    <script type="text/javascript" src="path-to-javascript-file.js"></script>
+    <script type="text/javascript" src="./index.js" defer></script>
   </body>
 </html>
