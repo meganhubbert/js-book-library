@@ -56,7 +56,31 @@ fetch("http://localhost:3000/books", {
     .then((bookObj) => {
         let newBookObj = {"addTitle":"title", "addAuthor": "author", "addGenre":"genre", "coverPhoto", "addPublicationDate": "publishingDate"};
 })
+function createBook(){
+    fetch("http://localhost:3000/books", {
+    method: "POST",
+    headers: {
+        "Content-type": "Application/json"
+    },
+    body: JSON.stringify(book)
+}
+    // .then(res => res.json())
+    // .then((bookObj) => {
+        
+})
 
+function addBook(e){
+    e.preventDefault()
+    const book = {
+        title: e.target['title-input'].value,
+        author: e.target.author.value,
+        genre: e.target['genre-input'].value,
+        coverPhoto : e.target.coverphoto.value,
+        publishingDate: e.target.publishingDate.value
+      }
+      createBook(book)
+          console.log(book);
+}
 
 // fetch("http://localhost:3000/books", {
 //     method: "PATCH",
