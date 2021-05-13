@@ -1,17 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const newBookForm = document.querySelector('form')
+    let newBookForm = document.querySelector('form')
     newBookForm.addEventListener('submit', addBook)
     fetchAll()
 })
 
 // global variables
 
-let searchBar = document.querySelector("input#search-bar")
-let searchButton = document.querySelector("button#search-button")
-let bookLibrary= document.querySelector("div#all-books")
-
-
-
+// let searchBar = document.querySelector("input#search-bar")
+// let searchButton = document.querySelector("button#search-button")
 
 //fetch functions
 
@@ -34,6 +30,35 @@ function createBook(book){
     .then(book => renderBook(book))
 }
 
+// function patchBook(updatedBook, id){
+//     fetch(`http://localhost:3000/books/${id}`, {
+//         method: "PATCH",
+//         headers: {
+//             "Content-type" : "application/json"
+//         },
+//         body: JSON.stringify(updatedBook)
+//     })
+//     .then(res => res.json())
+//     .then(book => {
+//         bookLibrary.innerHTML = ""
+//         renderBook(book)
+//     })
+// }
+
+// function deleteBook(id){
+//     fetch(`http://localhost:3000/books/${id}`, {
+//         method: "DELETE",
+//         headers: {
+//             "Content-Type" : "application/json"
+//         }
+//     })
+//     .then(res => res.json())
+//     .then(() => {
+//         bookLibrary.innerHTML = ""
+//         fetchAll()
+//     })
+// }
+
 //Event Handlers
 
 function addBook(e){
@@ -53,46 +78,55 @@ function addBook(e){
 function renderBook(book) {
     let bookDiv = document.createElement("div")
     bookDiv.innerHTML = `
-    <div class='bookInfo'></div>
-        <img src="${book.coverPhoto}" width="200px" height="300px"/>
-        <h4>${book.title}</h4>
-        <h5>${book.author}</h5>
-        <p>${book.genre}</p>
-        <p>${book.publishingDate}</p>
-    `
-bookLibrary.append(bookDiv)
+        <div class='bookInfo'></div>
+            <img src="${book.coverPhoto}" width="200px" height="300px"/>
+            <h4>${book.title}</h4>
+            <h5>${book.author}</h5>
+            <p>${book.genre}</p>
+            <p>${book.publishingDate}</p>
+            <button id="edit-button">Edit Info</button>
+            <button id="delete-button">Delete Book</button>
+        `
+    document.querySelector("div#all-books").append(bookDiv)
+
+    const editButton = document.querySelector('#edit-button')
+    editButton.addEventListener('click', () => editBook(book))
+
+    // const deleteButton = document.querySelector('#delete-button')
+    // deleteButton.addEventListener('click', () => deleteBook(book.id))
 }
+
+function editBook(book){
+    let form = document.querySelector('form')
+    // form.removeEventListener('submit', addBook)
+    // form.addEventListener('submit', (e) => updateBook(e, book))
+    console.log(form['title-input'])
+    // form['title-input'].value = book.title
+    // form['author-input'].value = book.author
+    // form['cover-input'].value = book.coverPhoto
+    // form['genre-input'].value = book.genre
+    // form['published-input'].value = book.publishingDate
+
+    // form.submit.value = 'Edit'
+}
+
+// function updateBook(e, book) {
+//     e.preventDefault()
+
+//     const updatedBook = {
+//         title: e.target['title-input'].value,
+//         author: e.target['author-input'].value,
+//         coverPhoto: e.target['cover-input'].value,
+//         genre: e.target['genre-input'].value,
+//         publishingDate: e.target['published-input'].value
+//     }
+//     form.reset()
+//     form.submit.value = 'submit'
+//     form.removeEventListener('submit', (e) => updateBook(e, book))
+//     form.addEventListener('click', addBook)
+
+//     patchBook(updatedBook, book.id)
+// }
 
 
 // searchButton.addEventListener("submit")
-
-//fetch
-// function viewBooks() {
-//     fetch("http://localhost:3000/books")
-//     .then(res => res.json())
-//     .then((allBooks) => {
-//         allBooks.forEach((bookObj) => {
-//             let bookSpan= document.createElement("span")
-//             let bookImage= document.createElement("img")
-//                 bookImage.src= bookObj.coverPhoto
-//                 bookImage.style.width = '200px'
-//                 bookImage.style.height = '300px'
-//                 bookSpan.append(bookImage)
-//             let bookTitle= document.createElement("h4")
-//                 bookTitle.innerText=bookObj.title
-//                 bookSpan.append(bookTitle)
-//             let bookAuthor= document.createElement("h5")
-//                 bookAuthor.innerText=bookObj.author
-//                 bookSpan.append(bookAuthor)
-//             let bookGenre= document.createElement("p")
-//                 bookGenre.innerText=bookObj.genre
-//                 bookSpan.append(bookGenre)
-//             let bookPublishingDate= document.createElement("p")
-//                 bookPublishingDate.innerText=bookObj.publishingDate
-//                 bookSpan.append(bookPublishingDate)
-//                 bookLibrary.append(bookSpan)
-//         });
-//     })
-// }
-
-// viewBooks();
