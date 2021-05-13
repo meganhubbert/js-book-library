@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const newBookForm = document.querySelector('form')
+    newBookForm.addEventListener('submit', addBook)
     fetchAll()
 })
 
@@ -7,13 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let searchBar = document.querySelector("input#search-bar")
 let searchButton = document.querySelector("button#search-button")
 let bookLibrary= document.querySelector("div#all-books")
-let addBookForm = document.querySelector("form#book-post-form")
-          let addTitle = addBookForm.querySelector("input#title-input")
-          let addAuthor = addBookForm.querySelector("input#author-input")
-          let addBookImage = addBookForm.querySelector("input#cover-input")
-          let addGenre = addBookForm.querySelector("input#genre-input")
-          let addPublicationDate = addBookForm.querySelector("input#published-input")
-          let addBookButton = addBookForm.querySelector("button#submit")
+
 
 
 
@@ -26,6 +22,29 @@ function fetchAll(){
 
 }
 
+function createBook(book){
+    fetch(`http://localhost:3000/books`, {
+        method: "POST",
+        headers: {
+            "Content-type" : "Application/json"
+        },
+        body: JSON.stringify(book)
+    })
+}
+
+//Event Handlers
+
+function addBook(e){
+    e.preventDefault()
+    const book = {
+        title: e.target['title-input'].value,
+        author: e.target['author-input'].value,
+        genre: e.target['genre-input'].value,
+        coverPhoto: e.target['cover-input'].value,
+        publishingDate: e.target['published-input'].value
+    }
+    createBook(book)
+}
 
 // DOM Manipulation
 
@@ -39,7 +58,7 @@ function renderBook(book) {
         <p>${book.genre}</p>
         <p>${book.publishingDate}</p>
     `
-document.querySelector('div#all-books').append(bookDiv)
+bookLibrary.append(bookDiv)
 }
 
 
