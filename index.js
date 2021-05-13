@@ -104,38 +104,40 @@ function renderBook(book) {
    
     editButton.addEventListener('click', () => {
     function editBook(book){
-        let editForm = document.querySelector('#edit-form')
-        editForm.removeEventListener('submit', addBook)
-        editForm.addEventListener('submit', (e) => updateBook(e, book))
-        editForm['title-edit'].value = book.title
-        editForm['author-edit'].value = book.author
-        editForm['cover-edit'].value = book.coverPhoto
-        editForm['genre-edit'].value = book.genre
-        editForm['published-edit'].value = book.publishingDate
+        let editForm = bookDiv.querySelector('#edit-form')
+        editForm.removeEventListener('click', addBook)
+        editForm.addEventListener('submit', (e) => console.log("Hi"))
+        // editForm.addEventListener('submit', (e) => updateBook(e, book))
+        //    editForm['title-edit'].value = "Hi" 
+    //     editForm['title-edit'].value = book.title
+    //     editForm['author-edit'].value = book.author
+    //     editForm['cover-edit'].value = book.coverPhoto
+    //     editForm['genre-edit'].value = book.genre
+    //     editForm['published-edit'].value = book.publishingDate
     
-        editForm.submit.value = 'Edit'
+    //     editForm.submit.value = 'Edit'
     }
     
-    function updateBook(e, book) {
-        e.preventDefault()
+    // function updateBook(e, book) {
+    //     e.preventDefault()
     
-        const updatedBook = {
-            title: e.target['title-edit'].value,
-            author: e.target['author-edit'].value,
-            coverPhoto: e.target['cover-edit'].value,
-            genre: e.target['genre-edit'].value,
-            publishingDate: e.target['published-edit'].value
-        }
-        editForm.reset()
-        editForm.submit.value = 'submit'
-        editForm.removeEventListener('submit', (e) => updateBook(e, book))
-        editForm.addEventListener('click', addBook)
+    //     const updatedBook = {
+    //         title: e.target['title-edit'].value,
+    //         author: e.target['author-edit'].value,
+    //         coverPhoto: e.target['cover-edit'].value,
+    //         genre: e.target['genre-edit'].value,
+    //         publishingDate: e.target['published-edit'].value
+    //     }
+    //     editForm.reset()
+    //     editForm.submit.value = 'submit'
+    //     editForm.removeEventListener('submit', (e) => updateBook(e, book))
+    //     editForm.addEventListener('click', addBook)
     
-        patchBook(updatedBook, book.id)
-    }
+    //     patchBook(updatedBook, book.id)
+    // }
     
     // const deleteButton = document.querySelector('#delete-button')
-    // deleteButton.addEventListener('click', () => deleteBook(book.id))
-})
+//     // deleteButton.addEventListener('click', () => deleteBook(book.id))
+// })
 
-}
+})}
