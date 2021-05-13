@@ -30,6 +30,8 @@ function createBook(book){
         },
         body: JSON.stringify(book)
     })
+    .then(res => res.json())
+    .then(book => renderBook(book))
 }
 
 //Event Handlers
