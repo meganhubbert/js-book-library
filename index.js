@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // global variables
 
+let bookLibrary = document.querySelector("div#all-books")
 // let searchBar = document.querySelector("input#search-bar")
 // let searchButton = document.querySelector("button#search-button")
 
@@ -78,19 +79,23 @@ function addBook(e){
 function renderBook(book) {
     let bookDiv = document.createElement("div")
     bookDiv.innerHTML = `
-        <div class='bookInfo'></div>
-            <img src="${book.coverPhoto}" width="200px" height="300px"/>
-            <h4>${book.title}</h4>
-            <h5>${book.author}</h5>
-            <p>${book.genre}</p>
-            <p>${book.publishingDate}</p>
+        <div class='bookInfo' id=${book.id}>
+                <img src="${book.coverPhoto}" width="200px" height="300px"/>
+                <h4>${book.title}</h4>
+                <h5>${book.author}</h5>
+                <p>${book.genre}</p>
+                <p>${book.publishingDate}</p>
+                // div id = "edit-form"
             <button id="edit-button">Edit Info</button>
             <button id="delete-button">Delete Book</button>
+        </div>
         `
-    document.querySelector("div#all-books").append(bookDiv)
-
-    const editButton = document.querySelector('#edit-button')
-    editButton.addEventListener('click', () => editBook(book))
+    
+    bookLibrary.append(bookDiv)
+    let editButton = bookDiv.querySelector('#edit-button')
+    console.log(editButton)
+   
+    editButton.addEventListener('click', () => {console.log("hello")})
 
     // const deleteButton = document.querySelector('#delete-button')
     // deleteButton.addEventListener('click', () => deleteBook(book.id))
@@ -100,7 +105,7 @@ function editBook(book){
     let form = document.querySelector('form')
     // form.removeEventListener('submit', addBook)
     // form.addEventListener('submit', (e) => updateBook(e, book))
-    console.log(form['title-input'])
+    form['title-input'] = "hi!"
     // form['title-input'].value = book.title
     // form['author-input'].value = book.author
     // form['cover-input'].value = book.coverPhoto
@@ -127,6 +132,3 @@ function editBook(book){
 
 //     patchBook(updatedBook, book.id)
 // }
-
-
-// searchButton.addEventListener("submit")
