@@ -1,3 +1,16 @@
+.logo {
+    padding: 20px;
+    float: left;
+}
+
 .bookInfo {
     padding: 20px;
+}
+
+.info {
+    padding: 20px;
+}
+
+body {
+    font-family: "Courier New";
 }
