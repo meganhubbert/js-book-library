@@ -1,7 +1,4 @@
-{/* <input id="search-bar" type="text" placeholder="Harry Potter and the Sorcerer's Stone"></input>
-          <button id="search-button">Search</button> */}
-
-        //   <div id = "all-books"></div>
+// global variables
 
 let searchBar = document.querySelector("input#search-bar")
 let searchButton = document.querySelector("button#search-button")
@@ -18,6 +15,7 @@ let addBookForm = document.querySelector("form#book-post-form")
 
 // searchButton.addEventListener("submit")
 
+//fetch
 function viewBooks() {
     fetch("http://localhost:3000/books")
     .then(res => res.json())
@@ -47,75 +45,3 @@ function viewBooks() {
 }
 
 viewBooks();
-
-
-// fetch("http://localhost:3000/books", {
-//     method: "POST",
-//     headers: {
-//         "Content-type": "Application/json"
-//     },
-//     body: JSON.stringify({addBookImage})
-// }
-//     .then(res => res.json())
-//     .then((bookObj) => {
-//         let newBookObj = {"addTitle":"title", "addAuthor": "author", "addGenre":"genre", "coverPhoto", "addPublicationDate": "publishingDate"};
-// })
-
-function createBook(){
-    fetch("http://localhost:3000/books", {
-    method: "POST",
-    headers: {
-        "Content-type": "Application/json"
-    },
-    body: JSON.stringify(book)
-}
-    .then(res => res.json())
-    .then((bookObj) => {
-        
-        
-})
-
-function addBook(e){
-    e.preventDefault()
-    const book = {
-        title: e.target['title-input'].value,
-        author: e.target.author.value,
-        genre: e.target['genre-input'].value,
-        coverPhoto : e.target.coverphoto.value,
-        publishingDate: e.target.publishingdate.value
-      }
-      createBook(book)
-          console.log(book);
-}
-
-// function renderNewBook() {
-//     let newBook = document.createElement('span')
-//     newBook.innerHTML = `
-//     <img src=${"coverPhoto.value"}/>
-//     <h4>${"title-input.value"}</h4>
-//     <h5>${"author.value"}</h5>
-//     <p>${"genre-input.value"}</p>
-//     <p>${"publishingdate.value"}</p>
-//     `
-// }
-
-let form = document.querySelector('form')
-    form.reset()
-    form.submit.value = 'submit'
-    form.addEventListener('click', addBook)
-
-
-// fetch("http://localhost:3000/books", {
-//     method: "PATCH",
-//     headers: {
-//         "Content-type": "Application/json"
-//     },
-//     body: json.stringify(data)
-//     })
-//     .then(() => r.json())
-//     .then((bookObj) => {
-//         console.log(bookObj)
-//         let newBook = bookObj
-//     .then()
-//     })
-
